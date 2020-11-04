@@ -8,6 +8,7 @@
  void Delete_Begin_DoublyLinkedList();
  void Delete_End_DoublyLinkedList();
  void Delete_POS_DoublyLinkedList();
+ void reverseDoublyLL();
 
  struct node_two
  {
@@ -65,6 +66,29 @@ void Display_DoublyLinkedList()
 		}
 
 	}
+}
+
+void reverseDoublyLL()
+{
+    struct node_two *ptr;
+    ptr=start;
+    if(start==NULL)
+    {
+    	printf("Doubly Linked List is empty\n");
+    }
+    struct node_two *temp;
+    while(ptr!=NULL)
+    {
+        temp=ptr->next;
+        ptr->next=ptr->prev;
+        ptr->prev=temp;
+        ptr=ptr->prev;
+        if(ptr!=NULL && ptr->next==NULL)
+        {
+        	start=ptr;
+        }
+    }
+
 }
 
 void Insert_begin__DoublyLinkedList()
@@ -326,7 +350,8 @@ printf("Press 6 to count the number of nodes of the Doubly Linked list\n");
 printf("Press 7 to delete the First node of the Doubly Linked list\n");
 printf("Press 8 to delete the Last node of the Doubly Linked list\n");
 printf("Press 9 to delete the node of the Doubly Linked list at a specified position\n");
-printf("Press 10 to terminate the program\n");
+printf("Press 10 to reverse the elements inside the doubly linked list\n");
+printf("Press 11 to terminate the program\n");
 scanf("%d",&choice3);
 printf("\n");
 switch(choice3)
@@ -386,6 +411,12 @@ printf("\n");
 break;
 
 case 10:
+reverseDoublyLL();
+printf("Reversal complete!!!...\n");
+printf("\n");
+break;
+
+case 11:
 printf("---------DEVELOPER INFO-------------\n");
 printf("NAME: Aditya Kumar\n");
 printf("COURSE: B.Tech\n");
